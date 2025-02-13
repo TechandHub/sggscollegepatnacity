@@ -1,0 +1,27 @@
+{
+  "name": "sggscollegepatnacity",
+  "version": "1.0.0",
+  "description": "SGGS College, Patna City's website with ERP",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "node app.js"
+  },
+  "keywords": [
+    "SGGS",
+    "College",
+    "Guru",
+    "Govind",
+    "Singh",
+    "College",
+    "Patna"
+  ],
+  "author": "Tech and Hub, Developers - Sahil and Aakash",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
