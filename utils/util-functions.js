@@ -85,6 +85,28 @@ export const adminAuth = async (req, res, next) => {
     }
 }
 
+export const userAuth = async (req, res, next) => {
+    try {
+        const token = req.cookies.uid
+        const verifiedUser = jwt.verify(token, process.env.SECRET_KEY)
+        const user = await User.findOne({ _id: verifiedUser._id })
+        if (!user.isAdmin) {
+            req._id = user._id,
+                req.userName = user.userName,
+                req.email = user.email,
+                req.isAdmin = user.isAdmin
+        } else {
+            // req.flash("flashMessage", ["Access denied, Please login", "alert-danger", "bg-danger"])
+            return res.redirect('/main/login')
+        }
+        next()
+    } catch (error) {
+        console.log("Error in admin auth verification", error)
+        // req.flash("flashMessage", ["Access denied, Please login", "alert-danger", "bg-danger"])
+        return res.redirect('/main/login')
+    }
+}
+
 const storage = multer.diskStorage({})
 export const upload = multer({
     storage: storage
@@ -101,4 +123,20 @@ export const noticeUpload = async (file) => {
     } catch (error) {
         console.error('Error uploading PDF:', error);
     }
-  }
+}
+
+export const certificateUserAuth = async (req, res, next) => {
+    try {
+        const token = req.cookies.uid
+        const verifiedUser = jwt.verify(token, process.env.SECRET_KEY)
+        // console.log(verifiedUser)
+        req.id = verifiedUser.id,
+            req.userName = verifiedUser.userName,
+            req.fullName = verifiedUser.fullName
+        next()
+    } catch (error) {
+        console.log("Error in certificate User Auth verification Sahil", error)
+        req.flash("flashMessage", ["Invalid session, Please Login first..", "alert-danger", "bg-danger"])
+        return res.status(200).redirect('login')
+    }
+} 
