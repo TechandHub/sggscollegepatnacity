@@ -1,0 +1,68 @@
+<div class="sidebar pe-4 pb-3">
+    <nav class="navbar bg-light navbar-light">
+        <img class="p-2" src="/images/sggscollegelogo.png" alt="MD College" style="width: 100%;">
+        <div class="d-flex align-items-center ms-4 mb-4">
+            <div class="ms-3">
+                <h6 class="mb-0">
+                    <%= locals.existingStudent.studentName %>
+                </h6>
+                <span>Student</span>
+            </div>
+        </div>
+        <div class="navbar-nav w-100">
+            <div class="nav-item dropdown">
+                <a href="/student/<%= courseSession %>/dashboard" class="nav-link"><i
+                        class="fa-solid fa-home me-2"></i>Dashboard</a>
+            </div>
+
+            <% if (semPortal.sem1) { %>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fa-solid fa-rectangle-list me-2"></i>Semester 1
+                    </a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="/student/<%= courseSession %>/sem1/admForm" class="dropdown-item">Admission Form</a>
+                    </div>
+                </div>
+                <% } %>
+                    <% if (semPortal.sem2) { %>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-rectangle-list me-2"></i>Semester 2
+                            </a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="/student/<%= courseSession %>/sem2/admForm" class="dropdown-item">Admission
+                            </div>
+                        </div>
+                        <% } %>
+
+                    <% if (semPortal.sem3) { %>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-rectangle-list me-2"></i>Semester 3
+                            </a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="/student/<%= courseSession %>/sem3/admForm" class="dropdown-item">Admission
+                            </div>
+                        </div>
+                        <% } %>
+
+                    <% if (semPortal.sem4) { %>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-rectangle-list me-2"></i>Semester 4
+                            </a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="/student/<%= courseSession %>/sem4/admForm" class="dropdown-item">Admission
+                            </div>
+                        </div>
+                        <% } %>
+
+                        
+                            <div class="nav-item dropdown">
+                                <a href="/student/logout" class="nav-link"><i
+                                        class="fa-solid fa-sign-out me-2"></i>Logout</a>
+                            </div>
+        </div>
+    </nav>
+</div>
