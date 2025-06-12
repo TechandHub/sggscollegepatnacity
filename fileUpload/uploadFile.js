@@ -72,7 +72,10 @@ export const uploadFile = async (file) => {
 export const noticeUpload = (file) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.v2.uploader.upload_stream(
-      { resource_type: 'auto' },
+      {
+        resource_type: 'raw',
+        folder: "notices"
+      },
       (error, result) => {
         if (error) {
           console.error('Notice Uploading Error:', error);
@@ -87,4 +90,3 @@ export const noticeUpload = (file) => {
 
 
 
-  
